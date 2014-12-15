@@ -4,7 +4,7 @@ var serve = require('koa-static');
 var cwd = process.cwd();
 var path = require('path');
 var app = require('xtpl/lib/koa')(require('koa')(), {
-  views: path.join(__dirname,'../views')
+  views: path.join(__dirname, '../views')
 });
 var fs = require('fs');
 var root = path.resolve(cwd, './');
@@ -46,6 +46,11 @@ app.use(mount('/', modularize(root, {
   }
 })));
 app.use(jscoverCoveralls());
+
+var less = require('koa-less');
+
+app.use(less(cwd));
+
 app.use(serveIndex(root, {
   hidden: true,
   view: 'details'
