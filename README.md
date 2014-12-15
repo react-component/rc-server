@@ -2,6 +2,24 @@
 
 development server for react component
 
+[![NPM version][npm-image]][npm-url]
+[![gemnasium deps][gemnasium-image]][gemnasium-url]
+[![node version][node-image]][node-url]
+[![npm download][download-image]][download-url]
+
+[npm-image]: http://img.shields.io/npm/v/rc-server.svg?style=flat-square
+[npm-url]: http://npmjs.org/package/rc-server
+[travis-image]: https://img.shields.io/travis/react-component/server.svg?style=flat-square
+[travis-url]: https://travis-ci.org/react-component/server
+[coveralls-image]: https://img.shields.io/coveralls/react-component/server.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/react-component/server?branch=master
+[gemnasium-image]: http://img.shields.io/gemnasium/react-component/server.svg?style=flat-square
+[gemnasium-url]: https://gemnasium.com/react-component/server
+[node-image]: https://img.shields.io/badge/node.js-%3E=_0.11-green.svg?style=flat-square
+[node-url]: http://nodejs.org/download/
+[download-image]: https://img.shields.io/npm/dm/rc-server.svg?style=flat-square
+[download-url]: https://npmjs.org/package/rc-server
+
 ## Feature
 
 * support jsx
@@ -64,7 +82,7 @@ script:
 var expect = require('expect.js');
 var React = require('react');
 var Component = require('../');
-var TestUtils = require('rc-test-utils');
+var TestUtils = require('rc-server');
 
 describe('it', function(){
     it('works', function(){
