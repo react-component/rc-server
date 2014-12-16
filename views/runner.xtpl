@@ -8,6 +8,7 @@
 </head>
 <body>
 <h1>{{appname}} Mocha Runner</h1>
+
 <div id="mocha"></div>
 <script src="/{{es5Shim}}/es5-shim.js?nowrap"></script>
 <script src="/{{es5Shim}}/es5-sham.js?nowrap"></script>
@@ -37,12 +38,12 @@
         }
         require(['./index-spec'], function () {
             if (window.mochaPhantomJS) {
-                var runner = mochaPhantomJS.run();
+                var runner = window.mochaRunner = mochaPhantomJS.run();
                 if (isCoverage) {
                     window.nodeJsCoverCoveralls(runner);
                 }
             } else {
-                mocha.run();
+                window.mochaRunner = mocha.run();
             }
         });
     })();
