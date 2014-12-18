@@ -26,6 +26,7 @@ development server for react component
 * support mocha-phantomjs
 * support travis
 * support coveralls.io
+* support md render as html
 
 
 ## Usage
