@@ -1,6 +1,6 @@
 {
   "name": "rc-server",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "server for react-component",
   "keywords": [
     "react",
@@ -46,5 +46,9 @@
     "react-tools": "~0.12.1",
     "xtemplate": "~4.0.1",
     "xtpl": "~3.1.8"
+  },
+  "devDependencies": {
+    "highlight.js": "~8.4.0",
+    "marked": "~0.3.2"
   }
 }
