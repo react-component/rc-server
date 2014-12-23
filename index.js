@@ -6,7 +6,7 @@ module.exports = function () {
     views: path.join(__dirname, './views')
   });
   var fs = require('fs');
-  var root = path.resolve(cwd, './');
+  var root = cwd;
   var serveIndex = require('koa-serve-index');
   var modularize = require('koa-modularize');
   var mount = require('koa-mount');
@@ -40,16 +40,15 @@ module.exports = function () {
       return 1;
     }
   }));
-  app.use(mount('/', modularize(root, {
+  var less = require('koa-less');
+  app.use(less(cwd));
+  // before less
+  app.use(modularize(root, {
     nowrap: function () {
       return this.url.indexOf('nowrap') != -1 || this.url.indexOf('/node_modules/node-jscover/') != -1;
     }
-  })));
+  }));
   app.use(jscoverCoveralls());
-
-  var less = require('koa-less');
-  app.use(less(cwd));
-
   app.use(serveIndex(root, {
     hidden: true,
     view: 'details'
