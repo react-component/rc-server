@@ -5,21 +5,14 @@ alert(1)
 
 ```
 
-````js
-if(window.seajs){
-    window.require = window.seajs.use;
-}
-````
-
 ````html
 <div id='react-content'></div>
 ````
 
 ````js
-require(['react'], function(React){
+var React = require('react');
 var x = <a href='#a'>a</a>;
 React.render(x, document.getElementById('react-content'));
-});
 ````
 
 ```html
