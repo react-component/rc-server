@@ -2,6 +2,9 @@ module.exports = function () {
   var serve = require('koa-static');
   var cwd = process.cwd();
   var path = require('path');
+  require('xtpl').config({
+    XTemplate: require('xtemplate')
+  });
   var app = require('xtpl/lib/koa')(require('koa')(), {
     views: path.join(__dirname, './views')
   });
