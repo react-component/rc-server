@@ -21,6 +21,7 @@
             padding-top: 1px;
             position: relative;
         }
+
         .highlight pre {
             font-family: Consolas, "Liberation Mono", Courier, monospace;
             margin: 6px 0;
@@ -33,6 +34,7 @@
             font-size: 13px;
             white-space: pre;
         }
+
         .highlight pre code {
             color: #5D6A6A;
             background-color: transparent;
