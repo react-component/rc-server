@@ -46,13 +46,13 @@ development server for react component
 - package.json
 ```
 
-# index.js
+#### index.js
 
 ```js
 module.exports = require('./lib/Component');
 ```
 
-# Component.js
+#### Component.js
 
 ```js
 /** @jsx React.DOM */
@@ -66,7 +66,7 @@ var Component = React.createClass({
 module.exports = Component;
 ```
 
-### .travis.yml
+#### .travis.yml
 
 ```
 language: node_js
