@@ -27,6 +27,7 @@ development server for react component
 * support travis
 * support coveralls.io
 * support md render as html
+* support load commonjs file into browser and run
 
 
 ## Usage
@@ -35,6 +36,8 @@ development server for react component
 
 ```
 - .travis.yml
+- examples
+ - index.md
 - lib
 - index.js
 - tests
@@ -83,14 +86,34 @@ script:
 var expect = require('expect.js');
 var React = require('react');
 var Component = require('../');
-var TestUtils = require('rc-server');
 
 describe('it', function(){
     it('works', function(){
         var component = (<Component/><a></a></Component>);
-        expect(TestUtils.children(component).length).to.be(1);
+        expect(component).to.be(component);
     });
 });
+```
+
+#### index.md
+
+```md
+
+\# h1
+\-\-\-\-\-
+
+\#\# h2
+
+\`\`\`\`html
+  &lt;div id='content'&gt;&lt;/div&gt;
+\`\`\`\`
+
+\`\`\`\`js
+var React = require('react');
+var Component = require('../');
+React.render(<Component>, document.getElementById('content'));
+\`\`\`\`
+
 ```
 
 
@@ -101,4 +124,5 @@ npm install
 npm start
 ```
 
-open [http://localhost:8001/tests/runner.html](http://localhost:8001/tests/runner.html) to see test
+* open [http://localhost:8001/tests/runner.html](http://localhost:8001/tests/runner.html) to see test
+* open [http://localhost:8001/examples/index.md](http://localhost:8001/examples/index.md) to see demo
