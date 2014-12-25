@@ -55,9 +55,13 @@ module.exports = require('./lib/Component');
 # Component.js
 
 ```js
+/** @jsx React.DOM */
 var React = require('react');
 var Component = React.createClass({
     // TODO
+    render: function(){
+        return <div></div>;
+    };
 });
 module.exports = Component;
 ```
@@ -126,6 +130,7 @@ describe('it', function(){
 \````
 
 ````js
+/** @jsx React.DOM */
 var React = require('react');
 var Component = require('../');
 React.render(<Component>, document.getElementById('content'));
