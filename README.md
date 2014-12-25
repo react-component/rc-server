@@ -39,10 +39,27 @@ development server for react component
 - examples
  - index.md
 - lib
+ - Component.js
 - index.js
 - tests
   - index-spec.js
 - package.json
+```
+
+# index.js
+
+```js
+module.exports = require('./lib/Component');
+```
+
+# Component.js
+
+```js
+var React = require('react');
+var Component = React.createClass({
+    // TODO
+});
+module.exports = Component;
 ```
 
 ### .travis.yml
