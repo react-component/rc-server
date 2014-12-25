@@ -105,16 +105,18 @@ describe('it', function(){
 ## h2
 
 ````html
-  &lt;div id='content'&gt;&lt;/div&gt;
-````
+<div id='content'></div>
+\````
 
 ````js
 var React = require('react');
 var Component = require('../');
 React.render(<Component>, document.getElementById('content'));
-````
+\````
 
 ```
+
+remove backslash!
 
 
 ### start server
