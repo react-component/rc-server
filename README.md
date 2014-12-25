@@ -46,6 +46,8 @@ development server for react component
 - package.json
 ```
 
+Suggest using https://github.com/react-component/generator-rc
+
 #### index.js
 
 ```js
@@ -140,6 +142,7 @@ React.render(<Component>, document.getElementById('content'));
 
 remove backslash!
 
+Suggest using https://github.com/react-component/generator-rc
 
 ### start server
 
