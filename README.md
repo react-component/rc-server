@@ -99,20 +99,20 @@ describe('it', function(){
 
 ```md
 
-\# h1
-\-\-\-\-\-
+# h1
+-----
 
-\#\# h2
+## h2
 
-\`\`\`\`html
+````html
   &lt;div id='content'&gt;&lt;/div&gt;
-\`\`\`\`
+````
 
-\`\`\`\`js
+````js
 var React = require('react');
 var Component = require('../');
 React.render(<Component>, document.getElementById('content'));
-\`\`\`\`
+````
 
 ```
 
