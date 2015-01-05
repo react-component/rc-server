@@ -1,6 +1,6 @@
 {
   "name": "rc-server",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "server for react-component",
   "keywords": [
     "react",
@@ -26,7 +26,8 @@
     "rc-server": "./bin/start.js"
   },
   "scripts": {
-    "start": "node --harmony bin/start"
+    "start": "node --harmony bin/start",
+    "publish": "git push origin"
   },
   "dependencies": {
     "autoprefixer-core": "~4.0.2",

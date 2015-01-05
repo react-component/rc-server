@@ -9,12 +9,12 @@ development server for react component
 
 [npm-image]: http://img.shields.io/npm/v/rc-server.svg?style=flat-square
 [npm-url]: http://npmjs.org/package/rc-server
-[travis-image]: https://img.shields.io/travis/react-component/server.svg?style=flat-square
-[travis-url]: https://travis-ci.org/react-component/server
-[coveralls-image]: https://img.shields.io/coveralls/react-component/server.svg?style=flat-square
-[coveralls-url]: https://coveralls.io/r/react-component/server?branch=master
-[gemnasium-image]: http://img.shields.io/gemnasium/react-component/server.svg?style=flat-square
-[gemnasium-url]: https://gemnasium.com/react-component/server
+[travis-image]: https://img.shields.io/travis/react-component/rc-server.svg?style=flat-square
+[travis-url]: https://travis-ci.org/react-component/rc-server
+[coveralls-image]: https://img.shields.io/coveralls/react-component/rc-server.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/react-component/rc-server?branch=master
+[gemnasium-image]: http://img.shields.io/gemnasium/react-component/rc-server.svg?style=flat-square
+[gemnasium-url]: https://gemnasium.com/react-component/rc-server
 [node-image]: https://img.shields.io/badge/node.js-%3E=_0.11-green.svg?style=flat-square
 [node-url]: http://nodejs.org/download/
 [download-image]: https://img.shields.io/npm/dm/rc-server.svg?style=flat-square
