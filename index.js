@@ -45,12 +45,30 @@ module.exports = function () {
   }));
   var less = require('koa-less');
   app.use(less(cwd));
+
   // before less
   app.use(modularize(root, {
     nowrap: function () {
       return this.url.indexOf('nowrap') != -1 || this.url.indexOf('/node_modules/node-jscover/') != -1;
+    },
+    next: function () {
+      var fileType = (this.path.match(/\.(js|css)$/) || [])[1];
+      return fileType === 'css';
     }
   }));
+
+  // autoprefixer
+  var autoprefixer = require('autoprefixer-core');
+  app.use(function *(next) {
+    var fileType = (this.path.match(/\.(js|css)$/) || [])[1];
+    if (fileType == 'css') {
+      this.body = autoprefixer.process(this.body).css;
+      this.set('Content-Length', Buffer.byteLength(this.body));
+    } else {
+      yield *next;
+    }
+  });
+
   app.use(jscoverCoveralls());
   app.use(serveIndex(root, {
     hidden: true,

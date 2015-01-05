@@ -23,6 +23,7 @@ development server for react component
 ## Feature
 
 * support jsx
+* support autoprefixer
 * support mocha-phantomjs
 * support travis
 * support coveralls.io
