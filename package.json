@@ -1,6 +1,6 @@
 {
   "name": "rc-server",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "server for react-component",
   "keywords": [
     "react",

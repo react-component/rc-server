@@ -61,7 +61,7 @@ module.exports = function () {
   var autoprefixer = require('autoprefixer-core');
   app.use(function *(next) {
     var fileType = (this.path.match(/\.(js|css)$/) || [])[1];
-    if (fileType == 'css') {
+    if (fileType == 'css' && this.body) {
       try {
         this.body = autoprefixer.process(this.body).css;
       } catch (e) {
