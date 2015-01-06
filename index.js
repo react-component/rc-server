@@ -62,7 +62,11 @@ module.exports = function () {
   app.use(function *(next) {
     var fileType = (this.path.match(/\.(js|css)$/) || [])[1];
     if (fileType == 'css') {
-      this.body = autoprefixer.process(this.body).css;
+      try {
+        this.body = autoprefixer.process(this.body).css;
+      } catch (e) {
+        console.error(e);
+      }
       this.set('Content-Length', Buffer.byteLength(this.body));
     } else {
       yield *next;
