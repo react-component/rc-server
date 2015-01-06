@@ -5,46 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>{{appname}} Mocha Runner</title>
+    <script src="/{{es5Shim}}/es5-shim.js?nowrap"></script>
+    <script src="/{{es5Shim}}/es5-sham.js?nowrap"></script>
+    <script src="/{{consolePolyfill}}/index.js?nowrap"></script>
+    <script src="/{{mocha}}/mocha.js?nowrap"></script>
+    <script src="/{{modulex}}/build/modulex-debug.js?nowrap"></script>
+    <script src="/{{nodeJscover}}/lib/front-end/header.js?nowrap"></script>
+    <script src="/{{nodeJscover}}/lib/front-end/jscoverage-branch.js?nowrap"></script>
+    <script src='/{{nodeJscover}}/lib/reporters/mocha/console.js?nowrap'></script>
+    <link href="/{{mocha}}/mocha.css?nowrap" type="text/css" rel="stylesheet" charset="utf-8"/>
 </head>
 <body>
 <h1>{{appname}} Mocha Runner</h1>
 
 <div id="mocha"></div>
-<script src="/{{es5Shim}}/es5-shim.js?nowrap"></script>
-<script src="/{{es5Shim}}/es5-sham.js?nowrap"></script>
-<script src="/{{consolePolyfill}}/index.js?nowrap"></script>
-<script src="/{{modulex}}/build/modulex-debug.js?nowrap"></script>
-<script src="/{{nodeJscover}}/lib/front-end/header.js?nowrap"></script>
-<script src="/{{nodeJscover}}/lib/front-end/jscoverage-branch.js?nowrap"></script>
-<link href="/{{mocha}}/mocha.css?nowrap" type="text/css" rel="stylesheet" charset="utf-8"/>
-<script src="/{{mocha}}/mocha.js?nowrap"></script>
-<script src='/{{nodeJscover}}/lib/reporters/mocha/console.js?nowrap'></script>
-<script src='/{{nodeJscoverCoveralls}}/lib/reports/mocha.js?nowrap'></script>
-<div id="content"></div>
+
 <script>
     (function () {
         window.process = {
             env: {}
         };
-        var isCoverage = location.search.indexOf('coverage') !== -1;
         mocha.setup('bdd');
         if (location.href.indexOf('coverage') !== -1) {
             require.config('packages', {
                 '/lib': {
                     filter: 'coverage',
-                    base: '/lib/'
+                    base: '/lib'
                 }
             });
         }
-        require(['./index-spec'], function () {
-            if (window.mochaPhantomJS) {
-                var runner = window.mochaRunner = mochaPhantomJS.run();
-                if (isCoverage) {
-                    window.nodeJsCoverCoveralls(runner);
-                }
-            } else {
-                window.mochaRunner = mocha.run();
-            }
+        require(['.' + '/index-spec'], function () {
+            window.mochaRunner = (window.mochaPhantomJS || mocha).run();
         });
     })();
 </script>

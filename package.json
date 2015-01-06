@@ -1,6 +1,6 @@
 {
   "name": "rc-server",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "server for react-component",
   "keywords": [
     "react",
@@ -48,8 +48,8 @@
     "mocha": "~2.0.1",
     "modulex": "~1.7.3",
     "modulex-util": "^1.1.4",
-    "node-jscover": "^0.6.8",
-    "node-jscover-coveralls": "^1.0.13",
+    "node-jscover": "^0.6.10",
+    "node-jscover-coveralls": "^2.0.0",
     "node-uuid": "~1.4.2",
     "react-tools": "~0.12.1",
     "xtemplate": "~4.0.1",
