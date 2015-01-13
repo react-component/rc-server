@@ -34,7 +34,7 @@
                 }
             });
         }
-        require(['.' + '/index-spec'], function () {
+        require(['.' + '/index.spec'], function () {
             window.mochaRunner = (window.mochaPhantomJS || mocha).run();
         });
     })();
