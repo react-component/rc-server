@@ -105,7 +105,8 @@ module.exports = function () {
   var appname = require(path.join(cwd, 'package.json')).name;
   app.get('/tests/runner.html', function *() {
     yield this.render('runner', mUtils.merge({
-      appname: appname
+      appname: appname,
+      query: this.query
     }, utils.getPackages()));
   });
 
