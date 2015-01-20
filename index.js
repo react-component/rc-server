@@ -21,7 +21,7 @@ module.exports = function () {
 
   app.use(require('./lib/doc')());
   app.use(router(app));
-// parse application/x-www-form-urlencoded
+  // parse application/x-www-form-urlencoded
   app.use(koaBody());
   app.use(jscoverHandler({
     onlyLoad: function () {
@@ -50,6 +50,24 @@ module.exports = function () {
   app.use(modularize(root, {
     nowrap: function () {
       return this.url.indexOf('nowrap') != -1 || this.url.indexOf('/node_modules/node-jscover/') != -1;
+    },
+    packageHook: function (file, packageName, suffix) {
+      // only can has one global react
+      if (packageName === 'react') {
+        if (!suffix) {
+          var packageInfo = require(path.join(cwd, 'node_modules/react/package.json'));
+          var main;
+          if (typeof packageInfo.browser === 'string') {
+            main = packageInfo.browser
+          }
+          main = main || packageInfo.main || 'index';
+          if (main.slice(0, 2) === './') {
+            main = main.slice(2);
+          }
+          suffix = '/' + main;
+        }
+        return '/node_modules/react' + suffix;
+      }
     },
     next: function () {
       var fileType = (this.path.match(/\.(js|css)$/) || [])[1];
