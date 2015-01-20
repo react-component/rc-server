@@ -9,10 +9,17 @@
     <script src="/{{es5Shim}}/es5-sham.js?nowrap"></script>
     <script src="/{{consolePolyfill}}/index.js?nowrap"></script>
     <script src="/{{modulex}}/build/modulex-debug.js?nowrap"></script>
+    <script src='/node_modules/react/dist/react-with-addons.js?nowrap'></script>
     <script>
         window.process = {
             env: {}
         };
+        define(location.protocol + '//' + location.host + '/node_modules/react/addons', function () {
+            return window.React;
+        });
+        define(location.protocol + '//' + location.host + '/node_modules/react/react', function () {
+            return window.React;
+        });
     </script>
     <link rel="stylesheet" type="text/css" href="/{{highlightJs}}/styles/github.css">
     <style>
