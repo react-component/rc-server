@@ -18,6 +18,7 @@ module.exports = function () {
   var jscoverHandler = require('koa-node-jscover');
   var jscoverCoveralls = require('node-jscover-coveralls/lib/koa');
   var router = require('koa-router');
+  var reactPath = 'node_modules/react';
 
   app.use(require('./lib/doc')());
   app.use(router(app));
@@ -55,7 +56,7 @@ module.exports = function () {
       // only can has one global react
       if (packageName === 'react') {
         if (!suffix) {
-          var packageInfo = require(path.join(cwd, 'node_modules/react/package.json'));
+          var packageInfo = require(path.join(cwd, reactPath + '/package.json'));
           var main;
           if (typeof packageInfo.browser === 'string') {
             main = packageInfo.browser
@@ -66,7 +67,7 @@ module.exports = function () {
           }
           suffix = '/' + main;
         }
-        return '/node_modules/react' + suffix;
+        return '/' + reactPath + suffix;
       }
     },
     next: function () {
@@ -104,8 +105,13 @@ module.exports = function () {
   var mUtils = require('modulex-util');
   var appname = require(path.join(cwd, 'package.json')).name;
   app.get('/tests/runner.html', function *() {
+    var react = 1;
+    if (!fs.existsSync(path.join(cwd, reactPath))) {
+      react = 0;
+    }
     yield this.render('runner', mUtils.merge({
       appname: appname,
+      react: react,
       query: this.query
     }, utils.getPackages()));
   });

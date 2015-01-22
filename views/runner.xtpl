@@ -14,7 +14,7 @@
     <script src="/{{nodeJscover}}/lib/front-end/jscoverage-branch.js?nowrap"></script>
     <script src='/{{nodeJscover}}/lib/reporters/mocha/console.js?nowrap'></script>
     <link href="/{{mocha}}/mocha.css?nowrap" type="text/css" rel="stylesheet" charset="utf-8"/>
-    {{#if(query.dev === undefined)}}
+    {{#if(react && query.dev === undefined)}}
     <script src='/node_modules/react/dist/react-with-addons.js?nowrap'></script>
     {{/if}}
 </head>
@@ -29,7 +29,7 @@
             env: {}
         };
         mocha.setup('bdd');
-        {{#if(query.dev === undefined)}}
+        {{#if(react && query.dev === undefined)}}
         define(location.protocol + '//' + location.host + '/node_modules/react/addons', function () {
             return window.React;
         });
