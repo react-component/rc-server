@@ -1,6 +1,6 @@
 {
   "name": "rc-server",
-  "version": "1.5.10",
+  "version": "2.0.0",
   "description": "server for react-component",
   "keywords": [
     "react",
@@ -44,7 +44,6 @@
     "koa-router": "~3.7.0",
     "koa-serve-index": "~1.0.1",
     "koa-static": "~1.4.7",
-    "marked": "~0.3.2",
     "mocha": "~2.0.1",
     "modulex": "~1.7.3",
     "modulex-util": "^1.1.4",

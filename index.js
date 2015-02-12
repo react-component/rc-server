@@ -20,7 +20,7 @@ module.exports = function () {
   var router = require('koa-router');
   var reactPath = 'node_modules/react';
 
-  app.use(require('./lib/doc')());
+  app.use(require('./lib/js2html')());
   app.use(router(app));
   // parse application/x-www-form-urlencoded
   app.use(koaBody());

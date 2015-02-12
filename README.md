@@ -27,7 +27,7 @@ development server for react component
 * support mocha-phantomjs
 * support travis
 * support coveralls.io
-* support md render as html
+* support react js module render as html
 * support load commonjs file into browser and run
 
 
@@ -38,7 +38,8 @@ development server for react component
 ```
 - .travis.yml
 - examples
- - index.md
+ - index.html
+ - index.js
 - lib
  - Component.js
 - index.js
@@ -52,7 +53,9 @@ Suggest using https://github.com/react-component/generator-rc
 #### index.js
 
 ```js
-module.exports = require('./lib/Component');
+/** @jsx React.DOM */
+var Component = require('./lib/Component');
+module.exports = <Component />
 ```
 
 #### Component.js
@@ -119,26 +122,10 @@ describe('it', function(){
 });
 ```
 
-#### index.md
+#### index.html
 
-```md
-
-# h1
------
-
-## h2
-
-````html
-<div id='content'></div>
-\````
-
-````js
-/** @jsx React.DOM */
-var React = require('react');
-var Component = require('../');
-React.render(<Component>, document.getElementById('content'));
-\````
-
+```
+placeholder
 ```
 
 remove backslash!
@@ -153,4 +140,4 @@ npm start
 ```
 
 * open [http://localhost:8001/tests/runner.html](http://localhost:8001/tests/runner.html) to see test
-* open [http://localhost:8001/examples/index.md](http://localhost:8001/examples/index.md) to see demo
+* open [http://localhost:8001/examples/index.md](http://localhost:8001/examples/index.html) to see demo
