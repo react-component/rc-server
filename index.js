@@ -55,6 +55,9 @@ module.exports = function () {
     packageHook: function (file, packageName, suffix) {
       // only can has one global react
       if (packageName === 'react') {
+        if (!fs.existsSync(path.join(cwd, reactPath + '/package.json'))) {
+          return packageName + (suffix || '');
+        }
         if (!suffix) {
           var packageInfo = require(path.join(cwd, reactPath + '/package.json'));
           var main;
