@@ -1,11 +1,14 @@
-module.exports = function () {
+module.exports = function (app, option) {
+  option = option || {};
   var serve = require('koa-static');
   var cwd = process.cwd();
+  var util = require('modulex-util');
   var path = require('path');
   require('xtpl').config({
     XTemplate: require('xtemplate')
   });
-  var app = require('xtpl/lib/koa')(require('koa')(), {
+  app = app || require('koa')();
+  app = require('xtpl/lib/koa')(app, {
     views: path.join(__dirname, './views')
   });
   var fs = require('fs');
@@ -48,7 +51,7 @@ module.exports = function () {
   app.use(less(cwd));
 
   // before less
-  app.use(modularize(root, {
+  app.use(modularize(root, util.mix({
     nowrap: function () {
       return this.url.indexOf('nowrap') != -1 || this.url.indexOf('/node_modules/node-jscover/') != -1;
     },
@@ -77,7 +80,7 @@ module.exports = function () {
       var fileType = (this.path.match(/\.(js|css)$/) || [])[1];
       return fileType === 'css';
     }
-  }));
+  }, option.modularize)));
 
   // autoprefixer
   var autoprefixer = require('autoprefixer-core');
