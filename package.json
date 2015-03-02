@@ -1,6 +1,6 @@
 {
   "name": "rc-server",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "server for react-component",
   "keywords": [
     "react",
@@ -55,7 +55,6 @@
     "xtpl": "~3.1.8"
   },
   "devDependencies": {
-    "bootstrap": "~3.3.1",
-    "react": "~0.12.2"
+    "bootstrap": "~3.3.1"
   }
 }

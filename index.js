@@ -22,6 +22,7 @@ module.exports = function (app, option) {
   var jscoverCoveralls = require('node-jscover-coveralls/lib/koa');
   var router = require('koa-router');
   var reactPath = 'node_modules/react';
+  var currentPackageInfo = require(path.join(cwd, 'package.json'));
 
   app.use(require('./lib/js2html')());
   app.use(router(app));
@@ -58,7 +59,7 @@ module.exports = function (app, option) {
     packageHook: function (file, packageName, suffix) {
       // only can has one global react
       if (packageName === 'react') {
-        if (!fs.existsSync(path.join(cwd, reactPath + '/package.json'))) {
+        if (!(currentPackageInfo.dependencies || {})[packageName] && !(currentPackageInfo.devDependencies || {})[packageName] || !fs.existsSync(path.join(cwd, reactPath + '/package.json'))) {
           return packageName + (suffix || '');
         }
         if (!suffix) {
