@@ -78,8 +78,7 @@ module.exports = function (app, option) {
       }
     },
     next: function () {
-      var fileType = (this.path.match(/\.(js|css)$/) || [])[1];
-      return fileType === 'css';
+      return 1;
     }
   }, option.modularize)));
 
@@ -100,6 +99,15 @@ module.exports = function (app, option) {
   });
 
   app.use(jscoverCoveralls());
+
+  app.use(require('koa-source-map')({
+    skip: function (app, next) {
+      if (app.url.indexOf('-coverage.js') !== -1) {
+        return true;
+      }
+    }
+  }));
+
   app.use(serveIndex(root, {
     hidden: true,
     view: 'details'
