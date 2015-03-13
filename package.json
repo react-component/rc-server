@@ -1,6 +1,6 @@
 {
   "name": "rc-server",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "server for react-component",
   "keywords": [
     "react",
@@ -51,12 +51,12 @@
     "node-jscover": "^0.6.10",
     "node-jscover-coveralls": "^2.0.0",
     "node-uuid": "~1.4.2",
-    "react-tools": "~0.12.1",
+    "react-tools": "^0.13.0",
     "xtemplate": "~4.0.1",
     "xtpl": "~3.1.8"
   },
   "devDependencies": {
     "bootstrap": "~3.3.1",
-    "react": "~0.12.2"
+    "react": "^0.13.0"
   }
 }
