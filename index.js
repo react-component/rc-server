@@ -23,6 +23,7 @@ module.exports = function (app, option) {
   var router = require('koa-router');
   var reactPath = 'node_modules/react';
   var currentPackageInfo = require(path.join(cwd, 'package.json'));
+  var autoprefixer = require('autoprefixer-core');
 
   app.use(require('./lib/js2html')());
   app.use(router(app));
@@ -48,8 +49,18 @@ module.exports = function (app, option) {
       return 1;
     }
   }));
+
   var less = require('koa-less');
-  app.use(less(cwd));
+  app.use(less(cwd, {
+    postprocess: {
+      css: function (css) {
+        return autoprefixer.process(css).css
+      }
+    },
+    compiler: {
+      compress: false
+    }
+  }));
 
   // before less
   app.use(modularize(root, util.mix({
@@ -81,22 +92,6 @@ module.exports = function (app, option) {
       return 1;
     }
   }, option.modularize)));
-
-  // autoprefixer
-  var autoprefixer = require('autoprefixer-core');
-  app.use(function *(next) {
-    var fileType = (this.path.match(/\.(js|css)$/) || [])[1];
-    if (fileType == 'css' && this.body) {
-      try {
-        this.body = autoprefixer.process(this.body).css;
-      } catch (e) {
-        console.error(e);
-      }
-      this.set('Content-Length', Buffer.byteLength(this.body));
-    } else {
-      yield *next;
-    }
-  });
 
   app.use(jscoverCoveralls());
 
