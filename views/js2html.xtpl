@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>{{title}}</title>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" type="text/css" rel="stylesheet"/>
     <script src="/{{es5Shim}}/es5-shim.js?nowrap"></script>
     <script src="/{{es5Shim}}/es5-sham.js?nowrap"></script>
     <script src="/{{consolePolyfill}}/index.js?nowrap"></script>
