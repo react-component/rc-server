@@ -40,9 +40,9 @@
         {{/if}}
         if (location.href.indexOf('coverage') !== -1) {
             require.config('packages', {
-                '/lib': {
+                '/src': {
                     filter: 'coverage',
-                    base: '/lib'
+                    base: '/src'
                 }
             });
         }
