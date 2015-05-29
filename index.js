@@ -26,7 +26,7 @@ module.exports = function (app, option) {
   var currentPackageInfo = require(path.join(cwd, 'package.json'));
   var autoprefixer = require('autoprefixer-core');
 
-  app.use(require('koa-favicon')(path.join((__dirname + '/public/favicon.ico'))));
+  app.use(require('koa-favicon')(path.join(__dirname, './public/favicon.ico')));
   app.use(require('./lib/js2html')());
   app.use(router(app));
   // parse application/x-www-form-urlencoded
@@ -42,8 +42,8 @@ module.exports = function (app, option) {
   app.use(jsx(root, {
     babel: babel,
     // for test coverage
-    transformOption:{
-      retainLines:true
+    transformOption: {
+      retainLines: true
     },
     next: function () {
       return 1;
