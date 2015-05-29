@@ -1,11 +1,10 @@
 module.exports = function (app, option) {
   option = option || {};
   var serve = require('koa-static');
-  var babel = require('babel-core')
+  var babel = require('babel-core');
   var cwd = process.cwd();
   var util = require('modulex-util');
   var path = require('path');
-  var srcCwd = path.join(cwd, 'src') + '/';
   require('xtpl').config({
     XTemplate: require('xtemplate')
   });
@@ -35,22 +34,16 @@ module.exports = function (app, option) {
     onlyLoad: function () {
       return 1;
     },
-    originalFileLoader: function (ctx, srcPath) {
-      console.log(path, srcCwd)
-      if (srcPath.slice(0, srcCwd.length) === srcCwd) {
-        srcPath = path.join(srcPath.slice(0, srcCwd.length).replace(/\/src\/$/, '/lib/'),
-          srcPath.slice(srcCwd.length)).replace(/\.jsx$/, '.js');
-      }
-      ctx.body = fs.readFileSync(srcPath, {
-        encoding: 'utf-8'
-      });
-    },
     next: function () {
       return 1;
     }
   }));
   app.use(jsx(root, {
     babel: babel,
+    // for test coverage
+    transformOption:{
+      retainLines:true
+    },
     next: function () {
       return 1;
     }
@@ -105,17 +98,7 @@ module.exports = function (app, option) {
     }
   }, option.modularize)));
 
-  app.use(jscoverCoveralls({
-    lcovFilter: function (ctx, lcov) {
-      return lcov.replace(/(SF\:)([^\n]+)/g, function (m, m1, m2) {
-        var srcPrefix = 'src/';
-        if (m2.slice(0, srcPrefix.length) === srcPrefix) {
-          m2 = 'lib/' + m2.slice(srcPrefix.length);
-        }
-        return m1 + m2;
-      });
-    }
-  }));
+  app.use(jscoverCoveralls({}));
 
   app.use(require('koa-source-map')({
     skip: function (app, next) {
