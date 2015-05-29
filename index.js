@@ -26,6 +26,7 @@ module.exports = function (app, option) {
   var currentPackageInfo = require(path.join(cwd, 'package.json'));
   var autoprefixer = require('autoprefixer-core');
 
+  app.use(require('koa-favicon')(path.join((__dirname + '/public/favicon.ico'))));
   app.use(require('./lib/js2html')());
   app.use(router(app));
   // parse application/x-www-form-urlencoded
