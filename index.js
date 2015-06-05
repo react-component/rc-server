@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function (app, option) {
   option = option || {};
   var serve = require('koa-static');
@@ -16,7 +18,6 @@ module.exports = function (app, option) {
   var root = cwd;
   var serveIndex = require('koa-serve-index');
   var modularize = require('koa-modularize');
-  var mount = require('koa-mount');
   var jsx = require('koa-jsx');
   var koaBody = require('koa-body');
   var jscoverHandler = require('koa-node-jscover');
@@ -60,7 +61,7 @@ module.exports = function (app, option) {
   app.use(less(cwd, {
     postprocess: {
       css: function (css) {
-        return autoprefixer.process(css).css
+        return autoprefixer.process(css).css;
       }
     },
     compiler: {
@@ -71,7 +72,7 @@ module.exports = function (app, option) {
   // before less
   app.use(modularize(root, util.mix({
     nowrap: function () {
-      return this.url.indexOf('nowrap') != -1 || this.url.indexOf('/node_modules/node-jscover/') != -1;
+      return this.url.indexOf('nowrap') !== -1 || this.url.indexOf('/node_modules/node-jscover/') !== -1;
     },
     packageHook: function (file, packageName, suffix) {
       // only can has one global react
@@ -83,7 +84,7 @@ module.exports = function (app, option) {
           var packageInfo = require(path.join(cwd, reactPath + '/package.json'));
           var main;
           if (typeof packageInfo.browser === 'string') {
-            main = packageInfo.browser
+            main = packageInfo.browser;
           }
           main = main || packageInfo.main || 'index';
           if (main.slice(0, 2) === './') {
@@ -102,8 +103,8 @@ module.exports = function (app, option) {
   app.use(jscoverCoveralls({}));
 
   app.use(require('koa-source-map')({
-    skip: function (app, next) {
-      if (app.url.indexOf('-coverage.js') !== -1) {
+    skip: function (currentApp, next) {
+      if (currentApp.url.indexOf('-coverage.js') !== -1) {
         return true;
       }
     }
@@ -120,7 +121,7 @@ module.exports = function (app, option) {
   var utils = require('./lib/util');
   var mUtils = require('modulex-util');
   var appname = require(path.join(cwd, 'package.json')).name;
-  app.get('/tests/runner.html', function *() {
+  app.get('/tests/runner.html', function* () {
     var react = 1;
     if (!fs.existsSync(path.join(cwd, reactPath))) {
       react = 0;
