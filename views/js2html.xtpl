@@ -56,6 +56,7 @@
     </style>
 </head>
 <body>
+<h1>{{pkg.name}}@{{pkg.version}}</h1>
 <div id="__react-content"></div>
 {{{content}}}
 </body>
