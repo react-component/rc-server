@@ -1,6 +1,6 @@
 {
   "name": "rc-server",
-  "version": "3.0.7",
+  "version": "3.1.0",
   "description": "server for react-component",
   "keywords": [
     "react",
@@ -41,7 +41,7 @@
     "koa-favicon": "~1.2.0",
     "koa-jsx": "^2.0.2",
     "koa-less": "0.0.3",
-    "koa-modularize": "^3.5.0",
+    "koa-modularize": "3.6.x",
     "koa-node-jscover": "^1.0.0",
     "koa-router": "~3.7.0",
     "koa-serve-index": "1.x",

@@ -74,26 +74,9 @@ module.exports = function (app, option) {
     nowrap: function () {
       return this.url.indexOf('nowrap') !== -1 || this.url.indexOf('/node_modules/node-jscover/') !== -1;
     },
-    packageHook: function (file, packageName, suffix) {
-      // only can has one global react
-      if (packageName === 'react') {
-        if (!(currentPackageInfo.dependencies || {})[packageName] && !(currentPackageInfo.devDependencies || {})[packageName] || !fs.existsSync(path.join(cwd, reactPath + '/package.json'))) {
-          return packageName + (suffix || '');
-        }
-        if (!suffix) {
-          var packageInfo = require(path.join(cwd, reactPath + '/package.json'));
-          var main;
-          if (typeof packageInfo.browser === 'string') {
-            main = packageInfo.browser;
-          }
-          main = main || packageInfo.main || 'index';
-          if (main.slice(0, 2) === './') {
-            main = main.slice(2);
-          }
-          suffix = '/' + main;
-        }
-        return '/' + reactPath + suffix;
-      }
+    modules: {
+      react: path.join(cwd, reactPath, 'react.js'),
+      'react/addons': path.join(cwd, reactPath, 'addons.js')
     },
     next: function () {
       return 1;
@@ -114,19 +97,20 @@ module.exports = function (app, option) {
     hidden: true,
     view: 'details'
   }));
+
   app.use(serve(root, {
     hidden: true
   }));
 
   var utils = require('./lib/util');
-  var mUtils = require('modulex-util');
-  var appname = require(path.join(cwd, 'package.json')).name;
+  var appname = currentPackageInfo.name;
+
   app.get('/tests/runner.html', function* () {
     var react = 1;
     if (!fs.existsSync(path.join(cwd, reactPath))) {
       react = 0;
     }
-    yield this.render('runner', mUtils.merge({
+    yield this.render('runner', util.merge({
       appname: appname,
       react: react,
       query: this.query
