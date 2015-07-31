@@ -1,6 +1,6 @@
 {
   "name": "rc-server",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "server for react-component",
   "keywords": [
     "react",
@@ -47,6 +47,7 @@
     "koa-serve-index": "1.x",
     "koa-source-map": "1.x",
     "koa-static": "1.x",
+    "match-require": "1.x",
     "mocha": "~2.0.1",
     "modulex": "~1.7.3",
     "modulex-util": "^1.1.4",
@@ -62,5 +63,7 @@
     "precommit-hook": "~1.0.7",
     "react": "^0.13.0"
   },
-  "precommit": ["lint"]
+  "precommit": [
+    "lint"
+  ]
 }
