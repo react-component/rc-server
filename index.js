@@ -26,6 +26,8 @@ module.exports = function (app, option) {
   var reactPath = 'node_modules/react';
   var currentPackageInfo = require(path.join(cwd, 'package.json'));
   var autoprefixer = require('autoprefixer-core');
+  var lessReg = /\.less['"]/;
+  var matchRequire = require('match-require');
 
   app.use(require('koa-favicon')(path.join(__dirname, './public/favicon.ico')));
   app.use(require('./lib/js2html')());
@@ -47,6 +49,15 @@ module.exports = function (app, option) {
       retainLines: true
     },
     next: function () {
+      var ctx = this;
+      if (lessReg.test(ctx.body)) {
+        ctx.body = matchRequire.replaceAll(ctx.body, function (match, quote, dep) {
+          if (lessReg.test(dep + quote)) {
+            return 'require(' + quote + dep.replace(/\.less$/g, '.css') + quote + ')';
+          }
+          return match;
+        });
+      }
       return 1;
     }
   }));
