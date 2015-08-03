@@ -1,4 +1,4 @@
-require('./test.css');
+require('./test.less');
 require('bootstrap/dist/css/bootstrap.css');
 var React = require('react');
 require('react/addons');

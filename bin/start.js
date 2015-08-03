@@ -1,6 +1,6 @@
 'use strict';
 
-var app = require('../')();
+var app = require('../lib/')();
 var port = process.env.npm_package_config_port;
 app.listen(port);
 console.log('listen at ' + port);

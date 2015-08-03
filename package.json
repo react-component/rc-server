@@ -1,6 +1,6 @@
 {
   "name": "rc-server",
-  "version": "3.1.2",
+  "version": "3.2.0",
   "description": "server for react-component",
   "keywords": [
     "react",
@@ -26,7 +26,7 @@
     "rc-server": "./bin/start.js"
   },
   "scripts": {
-    "lint": "eslint index.js lib bin",
+    "lint": "eslint lib bin",
     "start": "node --harmony bin/start",
     "publish": "git push origin"
   },
@@ -34,13 +34,12 @@
     "autoprefixer-core": "~4.0.2",
     "babel-core": "5.x",
     "console-polyfill": "^0.1.2",
-    "es5-shim": "~4.0.5",
+    "es5-shim": "4.1.x",
     "highlight.js": "~8.4.0",
     "koa": "~0.13.0",
     "koa-body": "^0.4.0",
     "koa-favicon": "~1.2.0",
     "koa-jsx": "^2.0.2",
-    "koa-less": "0.0.3",
     "koa-modularize": "3.6.x",
     "koa-node-jscover": "^1.0.0",
     "koa-router": "~3.7.0",
@@ -55,7 +54,9 @@
     "node-jscover-coveralls": "^2.0.0",
     "normalize.css": "~3.0.3",
     "xtemplate": "4.x",
-    "xtpl": "3.x"
+    "xtpl": "3.x",
+    "less": "~2.5.0",
+    "node.extend": "~1.1"
   },
   "devDependencies": {
     "bootstrap": "~3.3.1",

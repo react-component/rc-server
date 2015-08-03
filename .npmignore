@@ -26,4 +26,4 @@ sea-modules
 spm_modules
 .cache
 dist
-tests/*.css
+*.css
