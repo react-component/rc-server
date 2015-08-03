@@ -10,7 +10,8 @@
 var extend = require('node.extend');
 var fs = require('fs');
 var less = require('less');
-var mkdirp = require('mkdirp');
+// by yiminghe
+// var mkdirp = require('mkdirp');
 var path = require('path');
 var url = require('url');
 var utilities = require('./utilities');
