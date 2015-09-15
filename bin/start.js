@@ -1,4 +1,4 @@
-'use strict';
+#!/usr/bin/env node
 
 var app = require('../lib/')();
 var port = process.env.npm_package_config_port;
