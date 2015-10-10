@@ -10,21 +10,10 @@
     <script src="/{{es5Shim}}/es5-sham.js?nowrap"></script>
     <script src="/{{consolePolyfill}}/index.js?nowrap"></script>
     <script src="/{{modulex}}/build/modulex-debug.js?nowrap"></script>
-    {{#if(query.dev === undefined)}}
-    <script src='/node_modules/react/dist/react-with-addons.js?nowrap'></script>
-    {{/if}}
     <script>
         window.process = {
             env: {}
         };
-        {{#if(query.dev === undefined)}}
-        define(location.protocol + '//' + location.host + '/node_modules/react/addons', function () {
-            return window.React;
-        });
-        define(location.protocol + '//' + location.host + '/node_modules/react/react', function () {
-            return window.React;
-        });
-        {{/if}}
     </script>
     <link rel="stylesheet" type="text/css" href="/{{highlightJs}}/styles/github.css">
     <style>
