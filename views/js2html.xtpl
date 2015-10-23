@@ -11,6 +11,7 @@
     <script src="/{{consolePolyfill}}/index.js?nowrap"></script>
     <script src="/{{modulex}}/build/modulex-debug.js?nowrap"></script>
     <script>
+        window.global = window;
         window.process = {
             env: {}
         };
