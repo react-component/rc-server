@@ -28,6 +28,9 @@
         window.process = {
             env: {}
         };
+        if(window.initMochaPhantomJS){
+          window.initMochaPhantomJS()
+        }
         mocha.setup('bdd');
         if (location.href.indexOf('coverage') !== -1) {
             require.config('packages', {
