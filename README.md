@@ -2,6 +2,8 @@
 
 development server for react component
 
+* This project is deprecated, use [rc-tools run server](https://github.com/react-component/rc-tools) *
+
 [![NPM version][npm-image]][npm-url]
 [![gemnasium deps][gemnasium-image]][gemnasium-url]
 [![node version][node-image]][node-url]
