@@ -56,7 +56,7 @@
     "xtemplate": "4.x",
     "xtpl": "3.x",
     "less": "~2.5.0",
-    "node.extend": "~1.1"
+    "node.extend": "~2.0"
   },
   "devDependencies": {
     "bootstrap": "~3.3.1",
