@@ -52,7 +52,7 @@
     "modulex-util": "^1.1.4",
     "node-jscover": "^0.6.10",
     "node-jscover-coveralls": "^2.0.0",
-    "normalize.css": "~3.0.3",
+    "normalize.css": "~8.0.1",
     "xtemplate": "4.x",
     "xtpl": "3.x",
     "less": "~2.5.0",
