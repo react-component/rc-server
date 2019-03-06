@@ -45,7 +45,7 @@
     "koa-router": "~3.7.0",
     "koa-serve-index": "1.x",
     "koa-source-map": "1.x",
-    "koa-static": "1.x",
+    "koa-static": "5.x",
     "match-require": "1.x",
     "mocha": "~2.0.1",
     "modulex": "~1.7.3",
