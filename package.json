@@ -61,7 +61,7 @@
   "devDependencies": {
     "bootstrap": "~3.3.1",
     "eslint": "~5.15.1",
-    "precommit-hook": "~1.0.7",
+    "precommit-hook": "~3.0.0",
     "react": "^0.13.0"
   },
   "precommit": [
