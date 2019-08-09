@@ -48,7 +48,7 @@
     "koa-static": "1.x",
     "match-require": "1.x",
     "mocha": "~2.0.1",
-    "modulex": "~1.7.3",
+    "modulex": "~1.9.4",
     "modulex-util": "^1.1.4",
     "node-jscover": "^0.6.10",
     "node-jscover-coveralls": "^2.0.0",
